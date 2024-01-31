@@ -14,6 +14,25 @@
             @csrf
             <button>Logout</button>
         </form>
+        <div style="border: 2px solid black;">
+            <form action="/create-recit" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="title" placeholder="title">
+                <textarea name="description" placeholder="Content..."></textarea>
+                <textarea name="conseil" placeholder="Conseil..."></textarea>
+                <label for="">Destination</label>
+                <select name="">
+                    <option value="">Afrique</option>
+                    <option value="">Amerique du nord</option>
+                    <option value="">Amerique du sud</option>
+                    <option value="">Asie</option>
+                    <option value="">Australie</option>
+                    <option value="">Europe</option>
+                </select>
+                <input type="file">
+                <button>Créer Votre Aventure </button>
+            </form>
+        </div>
     @else
         <div style="border: 2px solid black;">
             <h2>REGISTER</h2>
