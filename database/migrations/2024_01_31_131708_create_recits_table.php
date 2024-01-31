@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recits', function (Blueprint $table) {
-            $table->id();
+            $table->string('Title');
+            $table->text('Description');
+            $table->string('Aventure');
+            $table->string('Destination');
+            $table->string('Conseil');
+            $table->unsignedBigInteger('image_id'); // Add this line to create the image_id column
+            $table->foreignId('user_id')->constrained();
+
+            $table->date('date');
             $table->timestamps();
         });
     }
