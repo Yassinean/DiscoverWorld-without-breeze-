@@ -18,7 +18,7 @@
 
     <div class="px-8 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-            <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div class="text-center">
                     <h6 class="text-5xl font-bold text-deep-purple-accent-400">144K</h6>
                     <p class="font-bold">Downloads</p>
