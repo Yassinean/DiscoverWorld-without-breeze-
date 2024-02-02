@@ -67,6 +67,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Lien de diagramme de classe
 https://miro.com/app/board/uXjVN0fGR8M=/
+![image](https://github.com/Yassinean/DiscoverWorld-without-breeze-/assets/144820376/b9a54213-d3fe-46b9-82ce-200223129687)
+## Diagramme de cas d'utilisation
+![useCase Diagramme](https://github.com/Yassinean/DiscoverWorld-without-breeze-/assets/144820376/02ef143a-d493-4b85-91ce-3ac55d98562e)
+
+
 
 ## Lien du presentation du projet
 https://www.canva.com/design/DAF7q_daXtU/nk3Tvdb3VK10HsyBGGdCuA/view?utm_content=DAF7q_daXtU&utm_campaign=designshare&utm_medium=link&utm_source=editor
