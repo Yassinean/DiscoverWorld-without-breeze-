@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/aventure', function () {
-    return view('singleAventure');
+Route::get('/recit', function () {
+    return view('singleRecit');
 });
 
 Route::get('/login', function () {

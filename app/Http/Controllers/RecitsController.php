@@ -13,6 +13,7 @@ class RecitsController extends Controller
     public function addAventure(Request $request)
     {
         $data = $request->validate([
+            'title' => 'required',
             'destination' => 'required',
             'images' => 'required|array',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -23,10 +24,11 @@ class RecitsController extends Controller
         $userId = Auth::id();
 
         $newAventure = Recit::create([
+            'title' => $data['title'],
             'user_id' => $userId,
             'destination' => $data['destination'],
             'description' => $data['description'],
-            'conseils' => $data['conseils'],
+            'conseils' => $data['conseils']
         ]);
 
         if ($request->hasFile('images')) {
@@ -54,7 +56,7 @@ class RecitsController extends Controller
 
     public function afficherAll()
     {
-        $recits = Recit::with('images')->get();
+        $recits = Recit::with('images','user')->get();
         $userCount = User::count();
         $recitCount = Recit::count();
         $destinationCount = Recit::distinct('destination')->count();
@@ -85,11 +87,10 @@ class RecitsController extends Controller
         return view('welcome', compact('aventures'));
     }
 
-    public function singleAventure(Request $request)
+    public function singleRecit(Request $request)
     {
         $id = $request->query('id');
-        $singleAventure = Recit::where('id', $id)->with('images', 'user')->get();
-        return view('singleAventure', compact('singleAventure'));
+        $singleRecit = Recit::where('id', $id)->with('images', 'user')->get();
+        return view('singleRecit', compact('singleRecit'));
     }
-
 }

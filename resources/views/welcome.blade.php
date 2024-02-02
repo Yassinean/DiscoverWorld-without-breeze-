@@ -82,31 +82,33 @@
     </div>
 
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto mt-20">
-        @foreach ($recits as $recit)
-            <div class="w-full border rounded-md">
-                @foreach ($recit->images as $image)
-                    <img class="rounded-t-lg h-25" src="{{ URL('/storage/images/' . $image->image) }}"
-                        alt="Adventure Image" />
-                @break
-            @endforeach
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $recit->ville }}</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700">{{ $recit->description }}</p>
-                <a href="#"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
-                    </svg>
-                </a>
+    <div class="bg-white font-[sans-serif] my-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h2
+                    class="text-3xl font-extrabold text-[#333] inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-pink-400 after:rounded-full">
+                    LATEST BLOGS</h2>
             </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-md:max-w-lg mx-auto">
+                @foreach ($recits as $recit)
+                    <div
+                        class="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
+                        @foreach ($recit->images as $image)
+                            <img src="{{ URL('/storage/images/' . $image->image) }}" alt="Blog Post 1"
+                                class="w-full h-60 object-cover" />
+                        @break
+                    @endforeach
+                    <div class="p-6">
+                        <pre class="text-sm block text-gray-400 mb-2">Created at {{ $recit->created_at }} | BY {{ $recit->user->name }}
+                        </pre>
+                        <h3 class="text-xl font-bold text-[#333]">{{ $recit->title }}</h3>
+                        <hr class="my-6" />
+                        <p class="text-gray-400 text-sm">{{ $recit->description }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
-    @endforeach
+    </div>
 </div>
 </div>
 @endsection

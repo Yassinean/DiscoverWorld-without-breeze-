@@ -10,6 +10,7 @@ class Recit extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'user_id',
         'destination',
         'description',
