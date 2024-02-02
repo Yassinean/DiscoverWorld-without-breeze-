@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recit;
 use App\Models\RecitImages;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,9 +54,13 @@ class RecitsController extends Controller
 
     public function afficherAll()
     {
-        $aventures = Recit::with('images')->get();
-        return view('welcome', compact('aventures'));
+        $recits = Recit::with('images')->get();
+        $userCount = User::count();
+        $recitCount = Recit::count();
+        $destinationCount = Recit::distinct('destination')->count();
+        return view('welcome', compact('recits', 'userCount', 'recitCount', 'destinationCount'));
     }
+
 
     public function filterDesc()
     {

@@ -17,86 +17,96 @@
     </div>
 
     <div class="px-8 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                <div class="text-center">
-                    <h6 class="text-5xl font-bold text-deep-purple-accent-400">144K</h6>
-                    <p class="font-bold">Downloads</p>
-                </div>
-                <div class="text-center">
-                    <h6 class="text-5xl font-bold text-deep-purple-accent-400">12.9K</h6>
-                    <p class="font-bold">Subscribers</p>
-                </div>
-                <div class="text-center">
-                    <h6 class="text-5xl font-bold text-deep-purple-accent-400">27.3K</h6>
-                    <p class="font-bold">Users</p>
-                </div>
+        <div class="grid grid-cols-2 row-gap-8 md:grid-cols-3 mx-auto grid text-center">
+            <div class="md:border-r">
+                <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl">{{ $destinationCount }}</h6>
+                <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+                    Destinations
+                </p>
+            </div>
+            <div class="md:border-r">
+                <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl">{{ $recitCount }}</h6>
+                <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+                    Aventures
+                </p>
+            </div>
+            <div class="md:border-r">
+                <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl">{{ $userCount }}</h6>
+                <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+                    Utilisateurs
+                </p>
             </div>
         </div>
     </div>
 
     <div class="max-w-screen-xl mx-auto p-4 service-section">
-        <h1 class="text-3xl lg:text-5xl xl:text-6xl text-center mt-6 font-bold">Aventures</h1>
-        <div class="flex flex-wrap justify-between">
-      <div class="flex flex-wrap gap-6 mt-4 ">
-        <form action="{{ route('filter.asc') }}" method="GET">
-          <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-              ASC
-          </button>
-      </form>
-      
-      <form action="{{ route('filter.desc') }}" method="GET">
-          <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-              DESC
-          </button>
-      </form>
-      
-    </div>
-    <div class=" flex-end" >
-      <form  class="flex gap-2 " action="{{ route('filter.destination') }}" method="GET">
-        <select id="countries" name="destination" class="mt-6 ml-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option selected disabled>Sélectionnez un continent</option>
-            <option value="Tout">Tout</option>
-            <option value="Afrique">Afrique</option>
-            <option value="Europe">Europe</option>
-            <option value="Asie">Asie</option>
-            <option value="Nord">Amérique du Nord</option>
-            <option value="Sud">Amérique du Sud</option>
-        </select>
-        <div>
-        <button type="submit" class="px-4 py-2 mt-7 text-sm font-medium text-white bg-blue-700 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            Filtrer
-        </button> 
+        <h1 class="text-3xl lg:text-5xl xl:text-6xl text-center mt-6 font-bold text-gray-800">Aventures</h1>
+
+        <div class="flex flex-wrap justify-between mt-8">
+
+            <div class="flex flex-wrap gap-6">
+                <form action="{{ route('filter.asc') }}" method="GET">
+                    <button type="submit"
+                        class="py-2 px-4 mb-2 text-sm font-medium text-white bg-blue-500 rounded border border-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        Oldest First
+                    </button>
+                </form>
+
+                <form action="{{ route('filter.desc') }}" method="GET">
+                    <button type="submit"
+                        class="py-2 px-4 mb-2 text-sm font-medium text-white bg-blue-500 rounded border border-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        Newest First
+                    </button>
+                </form>
+            </div>
+
+            <div class="flex items-center space-x-4 mt-4">
+                <form action="{{ route('filter.destination') }}" method="GET" class="flex gap-2">
+                    <select id="countries" name="destination"
+                        class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected disabled>Select a continent</option>
+                        <option value="All">All</option>
+                        <option value="Afrique">Africa</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
+                        <option value="North">North America</option>
+                        <option value="South">South America</option>
+                    </select>
+                    <button type="submit"
+                        class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        Filter
+                    </button>
+                </form>
+            </div>
         </div>
-        
-    </form>
     </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto mt-20">
-            @foreach ($aventures as $aventure)
-                <div class="w-full border rounded-md">
-                    @foreach ($aventure->images as $image)
-                        <img class="rounded-t-lg h-25" src="{{ URL('/storage/images/' . $image->image) }}"
-                            alt="Adventure Image" />
-                    @break
-                @endforeach
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $aventure->ville }}</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700">{{ $aventure->description }}</p>
-                    <a href="#"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                        Read more
-                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 5h12m0 0L9 1m4 4L9 9" />
-                        </svg>
-                    </a>
-                </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto mt-20">
+        @foreach ($recits as $recit)
+            <div class="w-full border rounded-md">
+                @foreach ($recit->images as $image)
+                    <img class="rounded-t-lg h-25" src="{{ URL('/storage/images/' . $image->image) }}"
+                        alt="Adventure Image" />
+                @break
+            @endforeach
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $recit->ville }}</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700">{{ $recit->description }}</p>
+                <a href="#"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    Read more
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
 </div>
 @endsection

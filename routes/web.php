@@ -48,9 +48,7 @@ Route::post('/', [UserController::class, 'logout'])->name('logout');
 
 Route::post('/utilisateur', [RecitsController::class, 'addAventure'])->name('utilisateur');
 Route::get('/utilisateur', [RecitsController::class, 'afficherAventuresUser'])->name('aventures.utilisateur');
-Route::get('/', [RecitsController::class, 'afficherAll'])->name('aventures.welcome');
-
-
+Route::get('/', [RecitsController::class, 'afficherAll'])->name('welcome');
 Route::get('/filterDesc', [RecitsController::class, 'filterDesc'])->name('filter.desc');
 Route::get('/filterAsc', [RecitsController::class, 'filterAsc'])->name('filter.asc');
 
