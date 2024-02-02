@@ -56,4 +56,35 @@ class RecitsController extends Controller
         $aventures = Recit::with('images')->get();
         return view('welcome', compact('aventures'));
     }
+
+    public function filterDesc()
+    {
+        $aventures = Recit::with('images')->orderBy('id', 'desc')->get();
+        return view('welcome', compact('aventures'));
+    }
+
+    public function filterAsc()
+    {
+        $aventures = Recit::with('images')->orderBy('id', 'asc')->get();
+        return view('welcome', compact('aventures'));
+    }
+
+    public function filterDestination(Request $request)
+    {
+        $destination = $request->input('destination');
+        if ($destination === 'Tout') {
+            $aventures = Recit::with('images')->get();
+        } else {
+            $aventures = Recit::where('destination', $destination)->with('images')->get();
+        }
+        return view('welcome', compact('aventures'));
+    }
+
+    public function singleAventure(Request $request)
+    {
+        $id = $request->query('id');
+        $singleAventure = Recit::where('id', $id)->with('images', 'user')->get();
+        return view('singleAventure', compact('singleAventure'));
+    }
+
 }

@@ -38,11 +38,11 @@ Route::get('/utilisateur', function () {
 // ---------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
-Route::post('/register',[UserController::class,'userRegister']);
+Route::post('/register', [UserController::class, 'userRegister']);
 
-Route::post('/login',[UserController::class,'login']);
+Route::post('/login', [UserController::class, 'login']);
 
-Route::post('/',[UserController::class,'logout'])->name('logout') ;
+Route::post('/', [UserController::class, 'logout'])->name('logout');
 
 // --------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ Route::get('/utilisateur', [RecitsController::class, 'afficherAventuresUser'])->
 Route::get('/', [RecitsController::class, 'afficherAll'])->name('aventures.welcome');
 
 
+Route::get('/filterDesc', [RecitsController::class, 'filterDesc'])->name('filter.desc');
+Route::get('/filterAsc', [RecitsController::class, 'filterAsc'])->name('filter.asc');
 
-
-
-
+Route::get('/destination', [RecitsController::class, 'filterDestination'])->name('filter.destination');
