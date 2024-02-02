@@ -17,9 +17,11 @@
     </div>
 
     <div class="px-8 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <h1 class="text-3xl lg:text-5xl xl:text-6xl text-center mt-6 mb-5 font-bold text-gray-800">Statics</h1>
         <div class="grid grid-cols-2 row-gap-8 md:grid-cols-3 mx-auto grid text-center">
             <div class="md:border-r">
                 <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl">{{ $destinationCount }}</h6>
+
                 <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
                     Destinations
                 </p>
@@ -90,7 +92,7 @@
                     LATEST BLOGS</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-md:max-w-lg mx-auto">
-                @foreach ($recits as $recit)
+                @foreach ($aventures as $recit)
                     <div
                         class="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
                         @foreach ($recit->images as $image)
@@ -104,6 +106,15 @@
                         <h3 class="text-xl font-bold text-[#333]">{{ $recit->title }}</h3>
                         <hr class="my-6" />
                         <p class="text-gray-400 text-sm">{{ $recit->description }}</p>
+                        <a href="/recit/{{ $recit->id }}"
+                            class="inline-flex items-center px-3 py-2 my-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                            Lire Plus
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             @endforeach

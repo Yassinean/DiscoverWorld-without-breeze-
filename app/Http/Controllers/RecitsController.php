@@ -56,41 +56,53 @@ class RecitsController extends Controller
 
     public function afficherAll()
     {
-        $recits = Recit::with('images','user')->get();
+        $aventures = Recit::with('images')->latest()->get();
         $userCount = User::count();
         $recitCount = Recit::count();
         $destinationCount = Recit::distinct('destination')->count();
-        return view('welcome', compact('recits', 'userCount', 'recitCount', 'destinationCount'));
+        return view('welcome', compact('aventures', 'userCount', 'recitCount', 'destinationCount'));
     }
 
 
     public function filterDesc()
     {
-        $aventures = Recit::with('images')->orderBy('id', 'desc')->get();
-        return view('welcome', compact('aventures'));
+        $recits = Recit::with('images', 'user')->get();
+        $userCount = User::count();
+        $recitCount = Recit::count();
+        $destinationCount = Recit::distinct('destination')->count();
+        $aventures = Recit::with('images')->latest()->get();
+        return view('welcome', compact('recits', 'userCount', 'recitCount', 'destinationCount', 'aventures'));
     }
 
     public function filterAsc()
     {
-        $aventures = Recit::with('images')->orderBy('id', 'asc')->get();
-        return view('welcome', compact('aventures'));
+        $recits = Recit::with('images', 'user')->get();
+        $userCount = User::count();
+        $recitCount = Recit::count();
+        $destinationCount = Recit::distinct('destination')->count();
+        $aventures = Recit::with('images')->oldest()->get();
+        return view('welcome', compact('recits', 'userCount', 'recitCount', 'destinationCount', 'aventures'));
     }
 
     public function filterDestination(Request $request)
     {
         $destination = $request->input('destination');
-        if ($destination === 'Tout') {
-            $aventures = Recit::with('images')->get();
+        if ($destination === 'ََAll') {
+            return redirect()->route('home');
         } else {
             $aventures = Recit::where('destination', $destination)->with('images')->get();
         }
-        return view('welcome', compact('aventures'));
+        $userCount = User::count();
+        $recitCount = Recit::count();
+        $destinationCount = Recit::distinct('destination')->count();
+        return view('welcome', compact('aventures',  'userCount', 'recitCount', 'destinationCount', 'aventures'));
     }
 
-    public function singleRecit(Request $request)
+    public function singleRecit(Recit $recit)
     {
-        $id = $request->query('id');
-        $singleRecit = Recit::where('id', $id)->with('images', 'user')->get();
-        return view('singleRecit', compact('singleRecit'));
+        // dd($recit);
+        return view('singleRecit', [
+            "recit" => $recit,
+        ]);
     }
 }

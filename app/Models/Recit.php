@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recit extends Model
 {
     use HasFactory;
+    protected $with = ["images"]; 
 
     protected $fillable = [
         'title',

@@ -91,14 +91,14 @@
 
 
 
-        <div class="flex flex-row gap-4 mx-auto mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-md:max-w-lg mx-auto">
             @foreach ($aventures as $aventure)
-                <div class="w-full border rounded-md md:w-1/2 lg:w-1/3 p-4">
+                <div class="bg-white cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative top-0 hover:-top-2 transition-all duration-300">
                     @foreach ($aventure->images as $image)
-                        <img class="rounded-t-lg h-25 " src="{{ URL('/storage/images/' . $image->image) }}" alt="" />
+                        <img class="w-full h-60 object-cover " src="{{ URL('/storage/images/' . $image->image) }}" alt="" />
                     @break
                 @endforeach
-                <div class="p-5">
+                <div class="p-6">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $aventure->title }}</h5>
                     </a>

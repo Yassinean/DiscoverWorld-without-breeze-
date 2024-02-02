@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // -----------------------------------------------------------
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("home");
 
 Route::get('/recit', function () {
     return view('singleRecit');
@@ -49,7 +49,13 @@ Route::post('/', [UserController::class, 'logout'])->name('logout');
 Route::post('/utilisateur', [RecitsController::class, 'addAventure'])->name('utilisateur');
 Route::get('/utilisateur', [RecitsController::class, 'afficherAventuresUser'])->name('aventures.utilisateur');
 Route::get('/', [RecitsController::class, 'afficherAll'])->name('welcome');
+
+Route::get('/singleRecit', [RecitsController::class, 'singleRecit'])->name('aventures.singleRecit');
+
+
 Route::get('/filterDesc', [RecitsController::class, 'filterDesc'])->name('filter.desc');
 Route::get('/filterAsc', [RecitsController::class, 'filterAsc'])->name('filter.asc');
 
 Route::get('/destination', [RecitsController::class, 'filterDestination'])->name('filter.destination');
+
+Route::get('/recit/{recit}', [RecitsController::class, 'singleRecit']);
