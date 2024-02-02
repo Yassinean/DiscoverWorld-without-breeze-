@@ -15,11 +15,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// -----------------------------------------------------------
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/register', [UserController::class , 'register'] );
-Route::post('/logout', [UserController::class , 'logout'] );
-Route::post('/login', [UserController::class , 'login'] );
-Route::post('/create-recit', [RecitsController::class , 'createRecit'] );
+Route::get('/aventure', function () {
+    return view('singleAventure');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/utilisateur', function () {
+    return view('utilisateur');
+})->name('utilisateur');
+// ---------------------------------------------------------------------
+
+// ----------------------------------------------------------------------
+Route::post('/register',[UserController::class,'userRegister']);
+
+Route::post('/login',[UserController::class,'login']);
+
+Route::post('/',[UserController::class,'logout'])->name('logout') ;
+
+// --------------------------------------------------------------------------
+
+Route::post('/utilisateur', [RecitsController::class, 'addAventure'])->name('utilisateur');
+Route::get('/utilisateur', [RecitsController::class, 'afficherAventuresUser'])->name('aventures.utilisateur');
+Route::get('/', [RecitsController::class, 'afficherAll'])->name('aventures.welcome');
+
+
+
+
+
+

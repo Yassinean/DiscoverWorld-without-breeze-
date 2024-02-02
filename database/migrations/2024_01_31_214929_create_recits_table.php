@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('recits', function (Blueprint $table) {
             $table->id();
-            $table->string('Title');
-            $table->text('Description');
-            $table->string('Destination');
-            $table->string('Conseil');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('destination');
+            $table->string('description');
+            $table->string('conseils');
             $table->timestamps();
         });
     }

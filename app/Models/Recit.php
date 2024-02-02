@@ -9,5 +9,20 @@ class Recit extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['Title', 'Description', 'Destination', 'Conseil', 'user_id'];
+    protected $fillable = [
+        'user_id',
+        'destination',
+        'description',
+        'conseils'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(RecitImages::class, 'recit_id');
+    }
 }
